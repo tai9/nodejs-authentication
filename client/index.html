@@ -27,7 +27,8 @@
     <button id="btn" onclick="ping()">ping</button>
 
     <script>
-        const endpoint = "http://localhost:4100"
+        // const endpoint = "http://localhost:4100"
+        const endpoint = "nodejs-authentication-api.vercel.app"
         function ping() {
             fetch(endpoint).then(res => res.json()).then(r => {
                 console.log(r);
