@@ -1,18 +1,19 @@
-import express from "express";
-import cors from "cors";
-const app = express();
-const port = 4100;
+import "reflect-metadata";
+import { getDbConnection } from "./db";
+import app from "./app";
 
-app.use(cors());
+async function init() {
+  await getDbConnection();
 
-app.get("/", (req, res) => {
-  res.status(200).json({
-    status: "ok",
+  return app.listen(app.get("port"), () => {
+    console.log(
+      `App is running at http://localhost:%d in %s mode`,
+      app.get("port"),
+      app.get("env")
+    );
   });
-});
+}
 
-app.listen(port, () => {
-  console.log(`Example app listening on port http://localhost:${port}`);
-});
+const server = init();
 
-module.exports = app;
+export default server;
