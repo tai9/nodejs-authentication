@@ -4,7 +4,7 @@ import { getDbConnection } from "./db";
 import app from "./app";
 
 async function init() {
-  await getDbConnection();
+  // await getDbConnection();
 
   return app.listen(app.get("port"), () => {
     console.log(
