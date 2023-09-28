@@ -1,6 +1,7 @@
 import { DataSource } from "typeorm";
+import { User } from "./entities/User";
 
-let AppDataSource: DataSource;
+export let AppDataSource: DataSource;
 
 export const getDbConnection = async () => {
   if (AppDataSource) return AppDataSource;
@@ -12,8 +13,8 @@ export const getDbConnection = async () => {
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    entities: [],
-    synchronize: true,
+    entities: [User],
+    synchronize: process.env.NODE_ENV === "development",
     logging: false,
   });
 
