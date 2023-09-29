@@ -16,7 +16,7 @@ export const getDbConnection = async () => {
     entities: [User],
     synchronize: process.env.NODE_ENV === "development",
     logging: false,
-    ssl: true,
+    ssl: process.env.NODE_ENV === "production",
   });
 
   // to initialize the initial connection with the database, register all entities
