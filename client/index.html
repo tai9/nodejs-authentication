@@ -31,7 +31,7 @@
         const endpoint = "https://nodejs-authentication-api.vercel.app"
         function ping() {
             fetch(endpoint).then(res => res.json()).then(r => {
-                console.log(r);
+                window.alert(JSON.stringify(r))
             })
         }
     </script>

@@ -21,6 +21,7 @@ app.get("/", (req, res) => {
 
 app.use("/users", publicRouters);
 
+// connect DB
 getDbConnection();
 
 app.listen(4001, () => {
