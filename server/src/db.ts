@@ -30,6 +30,6 @@ export const getDbConnection = async () => {
     .catch((error) => {
       console.log(error);
 
-      // throw error;
+      throw error;
     });
 };

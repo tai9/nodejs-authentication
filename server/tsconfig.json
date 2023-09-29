@@ -1,5 +1,12 @@
 {
   "compilerOptions": {
+    "baseUrl": "src" /* Base directory to resolve non-absolute module names. */,
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    },
+    "rootDir": "src",
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
     /* Basic Options */
     // "incremental": true,                   /* Enable incremental compilation */
@@ -22,7 +29,7 @@
     // "noEmit": true,                        /* Do not emit outputs. */
     // "importHelpers": true,                 /* Import emit helpers from 'tslib'. */
     /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */
-    "downlevelIteration": true,
+    // "downlevelIteration": true,
     // "isolatedModules": true,               /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
     /* Strict Type-Checking Options */
     "strict": true /* Enable all strict type-checking options. */,
@@ -58,7 +65,7 @@
     "emitDecoratorMetadata": true, /* Enables experimental support for emitting type metadata for decorators. */
     /* Advanced Options */
     "skipLibCheck": true /* Skip type checking of declaration files. */,
-    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
+    // "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
   },
   "include": [
     "src"
