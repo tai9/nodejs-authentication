@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { getDbConnection } from "./db";
 const app = express();
 
 app.use(cors());
@@ -11,6 +12,8 @@ app.get("/", (req, res) => {
     status: "ok",
   });
 });
+
+getDbConnection();
 
 app.listen(app.get("port"), () => {
   console.log(
