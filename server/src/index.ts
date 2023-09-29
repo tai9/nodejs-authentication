@@ -1,8 +1,16 @@
-import "reflect-metadata";
-import { getDbConnection } from "./db";
-import app from "./app";
+import express from "express";
+import cors from "cors";
+const app = express();
 
-getDbConnection();
+app.use(cors());
+
+app.set("port", process.env.PORT || 4100);
+
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+  });
+});
 
 app.listen(app.get("port"), () => {
   console.log(
@@ -12,3 +20,5 @@ app.listen(app.get("port"), () => {
   );
   console.log("  Press CTRL-C to stop\n");
 });
+
+export default app;
