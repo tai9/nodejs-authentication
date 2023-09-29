@@ -16,6 +16,8 @@
     body {
         background-color: rgb(99, 99, 99);
         display: flex;
+        flex-direction: column;
+        gap: 16px;
         width: 100%;
         height: 100%;
         justify-content: center;
@@ -24,15 +26,53 @@
 </style>
 
 <body>
-    <button id="btn" onclick="ping()">ping</button>
+    <button onclick="ping()">ping</button>
+
+    <textarea id="loginPayload" cols="30" rows="5">{"username":"tailor",
+                "password":"123"}</textarea>
+    <button onclick="login()">login</button>
+
+    <div>
+        <p>
+            username: <span id="username"></span>
+        </p>
+        <p>accessToken:</p>
+        <textarea id="accessToken" cols="30" rows="5"></textarea>
+    </div>
 
     <script>
         // const endpoint = "http://localhost:4100"
         const endpoint = "https://nodejs-authentication-api.vercel.app"
+
+        const usernameDiv = document.getElementById("username")
+        const accessTokenDiv = document.getElementById("accessToken")
+
+
         function ping() {
             fetch(endpoint).then(res => res.json()).then(r => {
                 window.alert(JSON.stringify(r))
             })
+        }
+
+        async function login() {
+            const loginPayload = document.getElementById("loginPayload").value
+            const res = await fetch(endpoint + "/login", {
+                method: "POST",
+                body: loginPayload,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            const data = await res.json()
+
+            if (res.status !== 200) {
+                return window.alert(JSON.stringify(data))
+            }
+
+            usernameDiv.innerText = data.username
+            accessTokenDiv.innerText = data.accessToken
+
+
         }
     </script>
 </body>

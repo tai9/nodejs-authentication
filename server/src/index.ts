@@ -4,6 +4,7 @@ import { getDbConnection } from "./db";
 import express from "express";
 import cors from "cors";
 import publicRouters from "./routers/public.router";
+import authRouters from "./routers/auth.router";
 import { requestLogger } from "./middlewares/requestLogger";
 
 const app = express();
@@ -27,6 +28,7 @@ app.get("/ping", (req, res) => {
   });
 });
 
+app.use("/", authRouters);
 app.use("/users", publicRouters);
 
 // connect DB
