@@ -16,7 +16,7 @@ const dataSourceOptions: DataSourceOptions = {
     connectionLimit: 20,
   },
   migrations: ["src/migrations/**/*.ts"],
-  migrationsRun: true,
+  migrationsRun: process.env.NODE_ENV === "production",
   migrationsTableName: "custom_migration_table",
 };
 
