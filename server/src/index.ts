@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import "dotenv/config";
-import { getDbConnection } from "./db";
+import { getDbConnection } from "./config/db";
 import express from "express";
 import cors from "cors";
 import publicRouters from "./routers/public.router";

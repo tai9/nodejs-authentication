@@ -1,4 +1,4 @@
-import { AppDataSource } from "../db";
+import { AppDataSource } from "../config/db";
 import { User } from "../entities/User";
 import { compare } from "bcrypt";
 import { generateAccessToken } from "../utils/jwt";

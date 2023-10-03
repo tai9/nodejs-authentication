@@ -1,5 +1,5 @@
 import { hash } from "bcrypt";
-import { AppDataSource } from "../db";
+import { AppDataSource } from "../config/db";
 import { User } from "../entities/User";
 
 const createUser = async (user: User) => {
