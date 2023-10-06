@@ -27,6 +27,10 @@
 
 <body>
     <button onclick="ping()">ping</button>
+    <button onclick="getSession()">get session</button>
+    <button onclick="setSession()">set session</button>
+    <button onclick="signIn()">sign in</button>
+    <button onclick="signOut()">sign out</button>
 
     <textarea id="loginPayload" cols="30" rows="5">{"username":"tailor",
                 "password":"123"}</textarea>
@@ -52,6 +56,66 @@
             fetch(endpoint).then(res => res.json()).then(r => {
                 window.alert(JSON.stringify(r))
             })
+        }
+
+        async function getSession() {
+            fetch(endpoint + "/get-session", {
+                credentials: "include"
+            }).then(res => res.json()).then(r => {
+                console.log(r);
+                usernameDiv.innerText = r.data.username
+            })
+        }
+
+        async function setSession() {
+            fetch(endpoint + "/set-session", {
+                credentials: "include"
+            }).then(res => res.json()).then(r => {
+                console.log(r);
+            })
+        }
+
+        async function signIn() {
+            const res = await fetch(endpoint + "/sign-in", {
+                method: "POST",
+                body: JSON.stringify({
+                    username: 'tailor'
+                }),
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            const data = await res.json()
+
+            if (res.status !== 200) {
+                return window.alert(JSON.stringify(data))
+            }
+
+            console.log(data);
+
+            usernameDiv.innerText = data.username
+        }
+
+        async function signOut() {
+            const res = await fetch(endpoint + "/sign-out", {
+                method: "POST",
+                body: JSON.stringify({
+                    username: 'tailor'
+                }),
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            const data = await res.json()
+
+            if (res.status !== 200) {
+                return window.alert(JSON.stringify(data))
+            }
+
+            console.log(data);
+
         }
 
         async function login() {
